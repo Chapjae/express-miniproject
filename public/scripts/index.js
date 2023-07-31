@@ -69,6 +69,23 @@ const postTip = (tip) =>
       console.error('Error:', error);
     });
 
+const getDiagnostics = () => {
+  fetch('/api/diagnostics', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    //stringify the JSON body
+    body: JSON.stringify(),
+  })
+
+  .then((response) => response.json())
+  .then((data) => data)
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+ };
+
 // When the page loads, get all the tips
 getTips().then((data) => data.forEach((tip) => createCard(tip)));
 
